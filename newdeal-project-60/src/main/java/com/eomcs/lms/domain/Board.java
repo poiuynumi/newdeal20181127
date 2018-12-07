@@ -8,11 +8,8 @@ public class Board {
   private int viewCount;
   private int writerNo;
   private int lessonNo;
-<<<<<<< HEAD
   private Lesson lesson;
   private Member writer;
-=======
->>>>>>> 3b844ef9da9db640512a190d8526be4548810c2b
   
   public int getNo() {
     return no;
@@ -50,7 +47,6 @@ public class Board {
   public void setLessonNo(int lessonNo) {
     this.lessonNo = lessonNo;
   }
-<<<<<<< HEAD
   public Lesson getLesson() {
     return lesson;
   }
@@ -68,8 +64,3 @@ public class Board {
   
   
   
-=======
-  
-  
-}
->>>>>>> 3b844ef9da9db640512a190d8526be4548810c2b
