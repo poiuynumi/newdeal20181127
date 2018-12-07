@@ -9,6 +9,7 @@ public class Lesson implements Cloneable {
   private Date endDate;
   private int totalHours;
   private int dayHours;
+  private int ownernumber;
   
   @Override
   public Lesson clone() throws CloneNotSupportedException {
