@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.eomcs.lms.domain.Member;
 
+<<<<<<< HEAD
 //@WebFilter("/*")
+=======
+@WebFilter("/*")
+>>>>>>> 3b844ef9da9db640512a190d8526be4548810c2b
 public class AuthFilter implements Filter {
   
   @Override

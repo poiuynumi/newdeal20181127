@@ -2,7 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="com.eomcs.lms.dao.LessonDao">
+=======
+<mapper namespace="LessonDao">
+>>>>>>> 3b844ef9da9db640512a190d8526be4548810c2b
 
   <resultMap type="lesson" id="lessonMap">
     <id column="lno" property="no"/>
