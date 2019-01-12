@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul{
+      list-style: none;
+    }
+    .no, .content, .writer{
+      border: 1px solid;
+      display: inline-block;
+      text-align: center;
+    }
+    .no{
+      width: 30px;
+    }
+    .content{
+      width: 200px;
+    }
+    .writer{
+      display: inline-block;  
+      width: 100px;
+    }
+    li {
+        display: inline-block;
+        width: 340px;
+    }
+    .delbutton {
+        width: 50px;
+    }
+
+  </style>
+</head>
+
+<body>
+    <ul></ul>
+    <input id="num" value="" type="text" placeholder="번호">
+    <input id="cont" value="" type="text" placeholder="내용">
+    <input id="wri" value="" type="text" placeholder="작성자">
+    <button id="inpbutton">등록</button>
+
+    <script>
+        const data = [
+            { no: 1, content: '안녕하세요.', writer: '바흐' },
+            { no: 2, content: '반갑습니다.', writer: '모차르트' },
+            { no: 3, content: '하하하', writer: '베토벤' }
+        ]
+
+        function load() {
+            let list = '';
+            data.forEach((comment) => {
+                list += '<div><li><div class="no">' + comment.no + '</div>';
+                list += '<div class="content">' + comment.content + '</div>';
+                list += '<span class="writer">' + comment.writer + '</span></li>';
+                list += '<button class="delbutton">삭제</button></div>';
+            });
+            document.querySelector('ul').innerHTML = list;
+        }
+
+        window.addEventListener('load', load()); 
+        
+            var delbutton = document.getElementsByClassName('delbutton');
+            delbutton.addEventListener('click', function () {
+                var this.previousSibling
+                data.indexOf(this.parentElement.inner)
+                load();
+            });
+    
+
+        var inpbutton = document.getElementById('inpbutton');
+        inpbutton.addEventListener('click', function () {
+            var num = document.getElementById('num');
+            var cont = document.getElementById('cont');
+            var wri = document.getElementById('wri');
+
+            data[data.length] = {
+                no: num.value,
+                content: cont.value,
+                writer: wri.value
+            }
+
+            load();
+        });
+
+        //     // let list = '';
+        //     // data.forEach((comment) => {
+        //     //     list += '<div><li><div class="no">' + comment.no + '</div>';
+        //     //     list += '<div class="content">' + comment.content + '</div>';
+        //     //     list += '<span class="writer">' + comment.writer + '</span></li>';
+        //     //     list += '<button class="delbutton">삭제</button></div>';
+        //     // });
+
+        //     document.querySelector('ul').innerHTML = list;
+
+        //     var delbutton = document.getElementsByClassName('delbutton');
+        //     delbutton.addEventListener('click', function () {
+        //         this.parentElement.remove();
+        //     });
+        // });
+
+
+
+    </script>
+</body>
+
+</html>

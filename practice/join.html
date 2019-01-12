@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <style>
+        html {
+            margin: 3em 20em;
+        }
+
+        form div {
+            margin: 1rem;
+        }
+
+        .register {
+            border-style: none;
+            margin: 0 0 3rem 0;
+            letter-spacing: 5px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        span {
+            font-size: 12px;
+        }
+
+        .reference {
+            font-size: 11px;
+        }
+
+        .register_input {
+            width: 170px;
+            height: 24px;
+            cursor: pointer;
+            border: 1px solid #000;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin: 1.5rem 0;
+        }
+
+        .item {
+            display: inline-block;
+            width: 9rem;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="register" style="text-align:center">
+        <span class="register">REGISTER</span>
+    </div>
+    <form>
+        <div>
+            <span class="item">이름</span>
+            <input name="name" value="" type="text" placeholder="이름">
+        </div>
+        <div>
+            <span class="item">성별 </span>
+            <input id="gender0" name="gender" value="0" type="radio" checked=""><label class="reference" for="gender0">여자</label>
+            <input id="gender1" name="gender" value="1" type="radio" checked=""><label class="reference" for="gender1">남자</label>
+        </div>
+        <div>
+            <span class="item">아이디</span>
+            <input placeholder="아이디" name="member_id" value="" type="text">
+            <button href="#none" title="아이디 중복 확인(새창으로 열기)" style="margin: 0 5px">check</button>
+        </div>
+        <div>
+            <span class="item">비밀번호</span>
+            <input placeholder="비밀번호" id="passwd" name="passwd" value="" type="password" class="order_input">
+            <span class="reference">(*영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</span>
+        </div>
+        <div>
+            <span class="item">비밀번호 확인</span>
+            <input id="user_passwd_confirm" name="user_passwd_confirm" value="" type="password" class="order_input"
+                placeholder="비밀번호 확인">
+        </div>
+        <div>
+            <span class="item">주소</span>
+            <input id="postcode1" name="postcode1" class="order_input" readonly="" value="" type="text" size="10px"
+                placeholder="우편번호"> -
+            <button href="#none" title="우편번호 검색" onclick="" class="reference" id="postBtn">우편번호 검색</button> <input id="addr1"
+                name="addr1" class="order_input" readonly="" value="" type="text" placeholder="주소" size="31px">
+        </div>
+        <div>
+            <span class="item">상세 주소</span>
+            <input id="addr2" name="addr2" class="order_input" size="59" value="" type="text" placeholder="상세주소">
+        </div>
+        <div>
+            <span class="item">전화</span>
+            <select id="phone1" name="phone[]">
+                <option value="02">02</option>
+                <option value="031">031</option>
+                <option value="032">032</option>
+                <option value="033">033</option>
+                <option value="041">041</option>
+                <option value="042">042</option>
+                <option value="043">043</option>
+                <option value="016">016</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
+            </select>-<input id="phone2" name="phone[]" maxlength="4" class="order_input" value="" type="text">-<input
+                id="phone3" name="phone[]" maxlength="4" class="order_input" value="" type="text">
+        </div>
+        <div>
+            <span class="item">휴대전화</span>
+            <select id="mobile1" name="mobile[]">
+                <option value="">없음</option>
+                <option value="010" selected="selected">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
+            </select>-<input id="mobile2" name="mobile[]" maxlength="4" class="order_input" size="5" value="" type="text">-<input
+                id="mobile3" name="mobile[]" maxlength="4" fw-filter="isNumber&amp;isFill" class="order_input" size="5"
+                value="" type="text">
+        </div>
+        <div>
+            <span class="item">이메일</span>
+            <input type="text" name="email1" id="email1" placeholder="이메일 아이디">
+            <span>@</span>
+            <select name="email[]" id="email[]">
+                <option id="op1" value="op1">직접입력</option>
+                <option value="naver">naver.com</option>
+                <option value="daum">daum.net</option>
+                <input type="text" id="email2" name="email2">
+
+
+            </select>
+            <div style="text-align:right;">
+                <input type="button" value="CREATE AN ACCOUNT" class="register_input" onclick="memberJoinAction()">
+            </div>
+    </form>
+
+    <script>
+
+        var emailselect = document.getElementById('email[]');
+        emailselect.addEventListener('change', function () {
+            var email2 = document.getElementById('email2');
+            var op = emailselect.value;
+            if (op !== 'op1') {
+                email2.setAttribute('hidden', '');
+            } else email2.removeAttribute('hidden');
+        });
+
+        var passwdconfirm = document.getElementById('user_passwd_confirm');
+        passwdconfirm.addEventListener('keyup', function() {
+            var passwd = document.getElementById('passwd');
+            if (passwd.value == passwdconfirm.value) {
+                passwd.style = 'border: 1px solid blue'
+                passwdconfirm.style = 'border: 1px solid blue'
+            } else {
+                passwd.style = 'border: 1px solid red'
+                passwdconfirm.style = 'border: 1px solid red'
+            }
+        });
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET', './data.json');
+        // xhr.send();
+        // xhr.onreadystatechange = () => {
+        //     if (xhr.readyState === XMLHttpRequest.DONE) {
+        //         if(xhr.status === 200) {
+        //             console.log(xhr.responseText);
+        //         } else {
+        //             console.log('Error!');
+        //         }
+        //     }
+        // };
+
+
+
+    </script>
+</body>
+
+</html>
